@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="bg-[#FFF8F0] py-12">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-[#5D4037] mb-3">Our Cake Catalog</h1>
+            <p class="text-gray-500">Browse our selection of ready-to-order and custom cakes.</p>
+            <div class="w-24 h-1 bg-[#D81B60] mx-auto mt-6 rounded-full"></div>
+        </div>
+
+        <!-- Filter Tabs (Visual Only for Now) -->
+        <div class="flex justify-center space-x-4 mb-10">
+            <button class="px-6 py-2 rounded-full bg-[#5D4037] text-white font-medium cursor-pointer transition-transform hover:scale-105">All Cakes</button>
+            <button class="px-6 py-2 rounded-full bg-white text-[#5D4037] border border-[#5D4037] font-medium cursor-pointer transition-transform hover:scale-105 hover:bg-[#5D4037] hover:text-white">Custom</button>
+            <button class="px-6 py-2 rounded-full bg-white text-[#5D4037] border border-[#5D4037] font-medium cursor-pointer transition-transform hover:scale-105 hover:bg-[#5D4037] hover:text-white">Cupcakes</button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for product in products %}
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover cursor-pointer group">
+                <div class="overflow-hidden h-56">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    {% else %}
+                        <img src="https://via.placeholder.com/400x300/FFF8F0/5D4037?text=Julius+Cakes" alt="Placeholder" class="w-full h-full object-cover">
+                    {% endif %}
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-[#5D4037] mb-2">{{ product.name }}</h3>
+                    <p class="text-gray-500 text-sm mb-4 h-10 overflow-hidden">{{ product.description|truncatewords:15 }}</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-[#D81B60]">UGX {{ product.base_price|floatformat:0 }}</span>
+                        <a href="/custom-order" class="text-sm font-semibold bg-[#E64A19] text-white px-4 py-2 rounded-lg hover:bg-[#d84315] transition-colors cursor-pointer">Order Now</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <!-- Fallback if Julius hasn't added products via Admin yet -->
+                <div class="col-span-full text-center py-10">
+                    <p class="text-gray-500 text-lg">No products in the database yet. Julius needs to add some via the Admin Panel!</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

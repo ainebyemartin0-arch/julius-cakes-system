@@ -1,0 +1,24 @@
+/* Color coding for order statuses in the admin list view */
+.field-status strong {
+    color: white;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+/* Pending - Yellow/Orange */
+.column-status strong:contains("Pending"), .field-status strong:contains("Pending") {
+    background-color: #F59E0B;
+}
+/* Baking - Blue */
+.column-status strong:contains("Baking"), .field-status strong:contains("Baking") {
+    background-color: #3B82F6;
+}
+/* Ready - Green */
+.column-status strong:contains("Ready"), .field-status strong:contains("Ready") {
+    background-color: #10B981;
+}
+/* Completed - Gray */
+.column-status strong:contains("Completed"), .field-status strong:contains("Completed") {
+    background-color: #6B7280;
+}

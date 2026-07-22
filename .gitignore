@@ -1,0 +1,17 @@
+# Virtual Environment
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Django Database (We don't share local databases)
+db.sqlite3
+
+# Media & Static files (Generated automatically on the server)
+/media/
+/staticfiles/
+
+# Environment variables
+.env
