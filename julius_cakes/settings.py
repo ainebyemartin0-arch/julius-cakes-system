@@ -144,3 +144,5 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # Authentication Routes
 LOGIN_URL = '/login/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/dashboard/'
