@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="bg-[#FFF8F0] py-16 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 max-w-md">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-[#5D4037] p-8 text-center">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#D81B60]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-white">Staff Access</h1>
+                <p class="text-gray-300 mt-1 text-sm">Julius Cakes Control Center</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="p-8">
+                {% if form.errors %}
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                    <p class="text-sm text-red-700">Invalid username or password. Please try again.</p>
+                </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'login' %}" class="space-y-5">
+                    {% csrf_token %}
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="id_username">Username</label>
+                        <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#D81B60] focus:border-[#D81B60] outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="id_password">Password</label>
+                        <input type="password" name="password" autocomplete="current-password" required id="id_password" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#D81B60] focus:border-[#D81B60] outline-none transition-all">
+                    </div>
+                    
+                    <input type="hidden" name="next" value="{{ next }}">
+                    
+                    <button type="submit" class="btn-cta w-full text-white font-semibold py-3 rounded-xl cursor-pointer flex items-center justify-center space-x-2">
+                        <span>Secure Login</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" /></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <p class="text-center text-sm text-gray-400 mt-6">System Engineered by <span class="font-bold text-[#5D4037]">AINEBYE MARTIN</span></p>
+    </div>
+</section>
+{% endblock %}
