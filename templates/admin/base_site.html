@@ -31,9 +31,14 @@
 {% block usertools %}
 {% if has_permission %}
 <div id="user-tools" style="display: flex; justify-content: flex-end; align-items: center; gap: 15px; padding-bottom: 10px;">
-    <a href="/dashboard/" style="background-color: var(--secondary); color: white; padding: 8px 16px; border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 0.875rem;">
-        View Business Dashboard
-    </a>
+    <div style="display: flex; gap: 10px; align-items: center;">
+        <a href="/dashboard/" style="background-color: var(--secondary); color: white; padding: 8px 16px; border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 0.875rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+            View Business Dashboard
+        </a>
+        <a href="/logout/" style="background-color: #fef2f2; color: #ef4444; border: 1px solid #fecaca; padding: 8px 16px; border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 0.875rem; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#fee2e2'" onmouseout="this.style.backgroundColor='#fef2f2'">
+            Logout
+        </a>
+    </div>
     {% block welcome-msg %}
         <span style="color: #f3f4f6; font-size: 0.875rem;">Welcome, {% firstof user.get_short_name user.get_username %}.</span>
     {% endblock %}
