@@ -35,9 +35,12 @@
         <a href="/dashboard/" style="background-color: var(--secondary); color: white; padding: 8px 16px; border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 0.875rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
             View Business Dashboard
         </a>
-        <a href="/logout/" style="background-color: #fef2f2; color: #ef4444; border: 1px solid #fecaca; padding: 8px 16px; border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 0.875rem; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#fee2e2'" onmouseout="this.style.backgroundColor='#fef2f2'">
-            Logout
-        </a>
+        <form action="/logout/" method="post" style="margin: 0;">
+            {% csrf_token %}
+            <button type="submit" style="background-color: #fef2f2; color: #ef4444; border: 1px solid #fecaca; padding: 8px 16px; border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 0.875rem; transition: background-color 0.2s; cursor: pointer;" onmouseover="this.style.backgroundColor='#fee2e2'" onmouseout="this.style.backgroundColor='#fef2f2'">
+                Logout
+            </button>
+        </form>
     </div>
     {% block welcome-msg %}
         <span style="color: #f3f4f6; font-size: 0.875rem;">Welcome, {% firstof user.get_short_name user.get_username %}.</span>
